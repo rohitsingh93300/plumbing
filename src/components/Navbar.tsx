@@ -30,9 +30,7 @@ export default function Navbar({
     { label: 'About', id: 'about' },
     { label: 'Services', id: 'services' },
     { label: 'Pricing', id: 'pricing' },
-    { label: 'Before & After', id: 'before-after' },
     { label: 'Blog', id: 'blog' },
-    { label: 'FAQ', id: 'faq' },
     { label: 'Contact', id: 'contact' },
   ];
 

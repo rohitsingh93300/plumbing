@@ -94,8 +94,14 @@ export default function App() {
               </div>
             </section>
 
+            {/* Before & After Comparison Slider */}
+            <BeforeAfter />
+
             {/* Testimonials */}
             <Testimonials />
+
+            {/* FAQ Accordion */}
+            <FAQ />
 
             {/* Emergency Service Banner */}
             <section className="bg-gradient-to-r from-red-600 to-red-700 text-white py-16 px-6 text-center">
@@ -126,9 +132,7 @@ export default function App() {
         {currentPage === 'about' && <About />}
         {currentPage === 'services' && <Services />}
         {currentPage === 'pricing' && <Pricing />}
-        {currentPage === 'before-after' && <BeforeAfter />}
         {currentPage === 'blog' && <Blog />}
-        {currentPage === 'faq' && <FAQ />}
         {currentPage === 'contact' && <Contact />}
         {currentPage === 'agent-center' && <AgentDashboard />}
       </div>
