@@ -145,7 +145,7 @@ export default function Navbar({
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className="lg:hidden absolute top-full left-0 w-full glass-light dark:glass-dark shadow-2xl border-t border-dark-navy/10 dark:border-white/5 py-6 px-6 flex flex-col gap-4 animate-fade-in">
+        <div className="lg:hidden absolute top-full left-0 w-full bg-white dark:bg-dark-blue shadow-2xl border-t border-dark-navy/10 dark:border-white/10 py-6 px-6 flex flex-col gap-4 animate-fade-in">
           {navItems.map((item) => (
             <button
               key={item.id}

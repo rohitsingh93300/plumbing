@@ -12,7 +12,7 @@ import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
 import AgentDashboard from './components/AgentDashboard';
 import Testimonials from './components/Testimonials';
-import { PhoneCall } from 'lucide-react';
+
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -139,20 +139,7 @@ export default function App() {
       {/* Conversational chatbot widget */}
       <ChatWidget />
 
-      {/* Sticky Bottom Emergency Banner (Mobile optimization) */}
-      <div className="lg:hidden fixed bottom-0 left-0 w-full bg-red-600 border-t border-red-500 px-6 py-3 flex justify-between items-center z-40 shadow-lg">
-        <div className="flex items-center gap-2 text-white">
-          <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-ping"></div>
-          <span className="text-xxs font-extrabold uppercase tracking-wide">Emergency Plumber Active</span>
-        </div>
-        <a
-          href="tel:+18005553569"
-          className="bg-white text-red-600 font-extrabold text-xs py-2 px-4 rounded-xl shadow-md flex items-center gap-1.5 hover:scale-105 transition-transform"
-        >
-          <PhoneCall className="w-3.5 h-3.5 fill-current" />
-          <span>Call 24/7</span>
-        </a>
-      </div>
+
     </div>
   );
 }
