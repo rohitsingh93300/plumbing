@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #F5C518;
+  --color-brand-yellow: #F5C518;
+  --color-dark-navy: #071B34;
+  --color-dark-blue: #0D274A;
+  --color-dark-card: #14355E;
+  
+  --animate-blob: blob 8s infinite ease-in-out;
+  --animate-water-flow: water-flow 3s infinite linear;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-reverse: float-reverse 7s ease-in-out infinite;
+  --animate-ripple: ripple 1.5s ease-out infinite;
+
+  @keyframes blob {
+    0%, 100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -40px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+  }
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(3deg);
+    }
+  }
+  @keyframes float-reverse {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(15px) rotate(-3deg);
+    }
+  }
+  @keyframes ripple {
+    0% {
+      transform: scale(0.8);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  @keyframes water-flow {
+    0% {
+      background-position: 0% 0%;
+    }
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+}
+
+/* Custom Utilities and Reset */
+@layer base {
+  body {
+    font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    @apply antialiased overflow-x-hidden;
+  }
+  
+  /* Scrollbar Customization */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgba(245, 197, 24, 0.2);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(7, 27, 52, 0.2);
+    border-radius: 9999px;
+  }
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(245, 197, 24, 0.4);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(7, 27, 52, 0.4);
+  }
+}
+
+@layer utilities {
+  .glass-light {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .glass-dark {
+    background: rgba(13, 39, 74, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glow-yellow {
+    box-shadow: 0 0 30px rgba(245, 197, 24, 0.35);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 30px rgba(13, 148, 136, 0.2);
+  }
+  
+  .glow-text-yellow {
+    text-shadow: 0 0 10px rgba(245, 197, 24, 0.5);
+  }
+}
+
+/* Water meter animations */
+.liquid-fill {
+  background: linear-gradient(180deg, rgba(245, 197, 24, 0.6) 0%, rgba(245, 197, 24, 0.9) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-fill::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -150%;
+  left: -50%;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 40%;
+  animation: liquid-wave 5s infinite linear;
+}
+
+.liquid-fill::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -140%;
+  left: -40%;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 35%;
+  animation: liquid-wave 8s infinite linear;
+}
+
+@keyframes liquid-wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Cursor Glow follow effect support */
+.cursor-glow {
+  background: radial-gradient(400px circle at var(--x, 0) var(--y, 0), rgba(245, 197, 24, 0.06), transparent 80%);
+}
+
+.dark .cursor-glow {
+  background: radial-gradient(400px circle at var(--x, 0) var(--y, 0), rgba(245, 197, 24, 0.12), transparent 80%);
+}
+
+/* Hide native slider handles but styled for comparison slider */
+.compare-range {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: ew-resize;
+}
+
+.compare-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: #F5C518;
+  border: 4px solid #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  cursor: ew-resize;
+  transition: transform 0.1s ease;
+}
+
+.compare-range::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.dark .compare-range::-webkit-slider-thumb {
+  border-color: #071B34;
+}
+
+/* Water Droplet style */
+.water-droplet {
+  width: 15px;
+  height: 15px;
+  background-color: #F5C518;
+  border-radius: 0% 100% 100% 100%;
+  transform: rotate(45deg);
+}
